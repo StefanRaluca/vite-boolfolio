@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <ProjectCard />
+  <ProjectCard :projects="projects" :loading="loading" />
 </template>
 
 <style></style>
