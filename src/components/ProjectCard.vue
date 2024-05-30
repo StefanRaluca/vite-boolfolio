@@ -9,6 +9,9 @@ export default {
     loading: {
       type: Boolean,
       required: true
+    },
+    api_url: {
+      required: true
     }
   },
   data() {
@@ -26,24 +29,28 @@ export default {
 </script>
 
 
-
 <template>
   <div>
     <h1>Projects</h1>
     <div v-if="loading">Loading...</div>
-    <div v-else>
-      <div v-for="project in projects">
-        <h2>{{ project.title }}</h2>
+    <div v-else class="row">
+      <div v-for="project in projects.data" class="col-3">
+        <div class="card ">
+          <div class="card-body">
+            <h2>{{ project.title }}</h2>
+            <img v-if="project.image_cover && api_url"
+              :src="project.image_cover.startsWith('http') ? project.image_cover : api_url + 'torage/' + project.image_cover"
+              class="img_projects" alt="">
 
-        <!--  <img v-if="project.cover_image.startsWith('uploads')" :src="api_url + 'storage/' + project.cover_image" alt=""> -->
-
-        <!--     <img v-else :src="project.cover_image" alt=""> -->
-
-        <p>{{ project.description }}</p>
+            <!-- <p>{{ project.description }}</p> -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </template>
-
-<style></style>
+<style>
+.img_projects {
+  width: 100%;
+}
+</style>
