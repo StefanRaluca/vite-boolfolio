@@ -1,8 +1,11 @@
 <script>
 import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
 
 export default {
-  name: 'App',
+  components: {
+    ProjectCard
+  },
   data() {
     return {
       api_url: 'http://127.0.0.1:8000/',
@@ -33,7 +36,11 @@ export default {
 </script>
 
 <template>
-
+  <h1>Projects</h1>
+  <div v-if="loading">Loading...</div>
+  <div v-else>
+    <ProjectCard />
+  </div>
 </template>
 
 <style></style>
