@@ -1,10 +1,12 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './components/ProjectCard.vue';
+import AppNav from './components/AppNav.vue';
 
 export default {
   name: 'App',
   components: {
+    AppNav,
     ProjectCard
   },
   data() {
@@ -37,7 +39,12 @@ export default {
 </script>
 
 <template>
-  <ProjectCard :projects="projects" :loading="loading" :api_url="api_url" />
+  <div id="app">
+
+    <AppNav />
+    <ProjectCard :projects="projects" :loading="loading" :api_url="api_url" />
+  </div>
+
 </template>
 
 <style></style>
