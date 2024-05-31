@@ -31,7 +31,7 @@ export default {
 
 <template>
   <div>
-    <h1>Projects</h1>
+    <!--     <h1>Projects</h1> -->
     <div v-if="loading">Loading...</div>
     <div v-else class="row">
       <div v-for="project in projects.data" class="col-3">
