@@ -38,8 +38,8 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <h1>Projects Page</h1>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Projects Page</h1>
         <ProjectCard :projects="projects" :loading="loading" :api_url="api_url" />
     </div>
 </template>

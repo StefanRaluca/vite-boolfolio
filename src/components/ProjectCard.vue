@@ -31,18 +31,23 @@ export default {
 
 <template>
   <div>
-    <!--     <h1>Projects</h1> -->
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading" class="text-center my-5">
+      <div class="text-primary" role="status">
+        <span>Loading...</span>
+      </div>
+    </div>
     <div v-else class="row">
-      <div v-for="project in projects.data" class="col-3">
-        <div class="card ">
+      <div v-for="project in projects.data" class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 ">
+          <img v-if="project.image_cover && api_url"
+            :src="project.image_cover.startsWith('http') ? project.image_cover : api_url + 'storage/' + project.image_cover"
+            class="card-img-top img_projects" alt="">
           <div class="card-body">
-            <h2>{{ project.title }}</h2>
-            <img v-if="project.image_cover && api_url"
-              :src="project.image_cover.startsWith('http') ? project.image_cover : api_url + 'storage/' + project.image_cover"
-              class="img_projects" alt="">
-
-            <!-- <p>{{ project.description }}</p> -->
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+          </div>
+          <div class="card-footer">
+            <a :href="project.url_code" class="btn btn-primary">View Project</a>
           </div>
         </div>
       </div>
