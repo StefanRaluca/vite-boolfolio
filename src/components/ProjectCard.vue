@@ -39,7 +39,7 @@ export default {
           <div class="card-body">
             <h2>{{ project.title }}</h2>
             <img v-if="project.image_cover && api_url"
-              :src="project.image_cover.startsWith('http') ? project.image_cover : api_url + 'torage/' + project.image_cover"
+              :src="project.image_cover.startsWith('http') ? project.image_cover : api_url + 'storage/' + project.image_cover"
               class="img_projects" alt="">
 
             <!-- <p>{{ project.description }}</p> -->
