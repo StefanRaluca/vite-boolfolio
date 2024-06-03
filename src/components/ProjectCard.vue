@@ -47,7 +47,11 @@ export default {
             <p class="card-text">{{ project.description }}</p>
           </div>
           <div class="card-footer">
-            <a :href="project.url_code" class="btn btn-primary">View Project</a>
+            <!--    <a :href="project.url_code" class="btn btn-primary">View Project</a>
+            User {{ $route.params.id }} -->
+            <router-link :to="{ name: 'ProjectDetail', params: { slug: project.slug } }" class="btn btn-primary">
+              View Project
+            </router-link>
           </div>
         </div>
       </div>
