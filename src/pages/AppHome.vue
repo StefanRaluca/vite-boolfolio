@@ -1,87 +1,96 @@
 <script>
+import { gsap } from "gsap";
 
 export default {
     name: 'AppHome',
-    components: {
-
-    },
-    data() {
-        return {
-
-        }
+    mounted() {
+        gsap.from("#jumbotron-heading", { duration: 1, y: -50, opacity: 0, delay: 0.5 });
+        gsap.from("#jumbotron-description", { duration: 1, y: -50, opacity: 0, delay: 0.7 });
+        gsap.from("#jumbotron-subdescription", { duration: 1, y: -50, opacity: 0, delay: 0.9 });
+        this.animateButtons();
+        gsap.from("#jumbotron-image", { duration: 1, scale: 0, opacity: 0, delay: 0.5, ease: "back.out(1.7)" });
     },
     methods: {
+        animateButtons() {
+            const buttons = gsap.utils.toArray('.btn');
+            buttons.forEach(button => {
+                gsap.to(button, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power3.out",
+                    repeat: -1,
+                    yoyo: true
+                });
 
-
+            });
+        }
     }
 }
 </script>
-
-
 
 <template>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="text_jumbotron">Benvenuto nel mio progetto personale!</h1>
-                    <p class="desc_center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid dolore
-                        tempora ut
-                        eum atque, est excepturi enim soluta corporis aspernatur consequatur, distinctio rem neque
-                        adipisci minus voluptates. Vero, enim. Illum!</p>
-                    <p class="description_jumbo">lorem</p>
+                    <h1 class="display-8" id="jumbotron-heading">Mariana Raluca Stefan</h1>
+                    <h4 class="display-8" id="jumbotron-heading">Junior Full-Stack Developer</h4>
+                    <p class="lead" id="jumbotron-description">I'm a passionate full-stack developer with a keen
+                        creativity and problem-solving attitude. My goal is to create engaging and innovative digital
+                        experiences that leave a positive impact.</p>
+                    <p class="lead" id="jumbotron-subdescription">Turning ideas into reality through code and
+                        creativity.</p>
+                    <div class="button-wrapper">
+                        <router-link to="/projects" class="btn btn px-4 py-2 m-2 text-white btn-secondary"
+                            id="projects-button">
+                            <span>My Projects</span>
+                        </router-link>
+                        <router-link to="/about" class="btn btn-secondary" id="about-button">
+                            <span>About Me</span>
+                        </router-link>
+                    </div>
                 </div>
-                <!-- <div class="col-md-6">
-                    Imagine
-                </div> -->
+                <div class="col-md-6 text-center">
+                    <img src="../assets/img/raluimg.jpg" alt="" class="img-fluid rounded-circle mb-4"
+                        id="jumbotron-image">
+                    <div class="button-wrapper">
+                        <a href="https://github.com/StefanRaluca" target="_blank" class="btn"><img width="64"
+                                height="64" src="https://img.icons8.com/nolan/64/1A6DFF/C822FF/github.png"
+                                alt="github" /></a>
+                        <a href="https://www.linkedin.com/in/mariana-raluca-stefan-1b9936203/" target="_blank"
+                            class="btn"><img width="64" height="64"
+                                src="https://img.icons8.com/nolan/64/1A6DFF/C822FF/linkedin-circled.png"
+                                alt="linkedin-circled" /></a>
+
+                    </div>
+                </div>
             </div>
-            <p>Lorem ipsum dolor sit amet consecteturtas nisi, cumque nulla aspernatur repellat facere?</p>
-            <p class="lead">
-                <router-link to="/projects" class="btn btn-primary">My Project</router-link>
-                <router-link to="/about" class="btn btn-secondary">About me</router-link>
-            </p>
         </div>
     </div>
 </template>
 
+
+
 <style scoped>
 .jumbotron {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('');
     background-size: cover;
     background-position: center;
     height: 100vh;
     color: #fff;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.text_jumbotron {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-.desc_center {
-    font-size: 1.5rem;
-    font-weight: 300;
-}
-
-.description_jumbo {
-    font-size: 1rem;
-    color: #aaa;
+    background-image: linear-gradient(217deg, rgb(0 0 0 / 87%), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #27282b, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, .8), rgba(0, 0, 255, 0) 70.71%), url(https://www.elegantthemes.com/blog/wp-content/uploads/2018/04/Best-Code-and-Text-Editors.png);
 }
 
 .img-fluid {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 70%;
+    height: auto;
 }
 
 .btn-primary {
     background-color: #337ab7;
     border-color: #2e6da4;
     color: #fff;
-    margin-right: 10px;
+
 }
 
 .btn-primary:hover {
@@ -93,7 +102,6 @@ export default {
     background-color: #666;
     border-color: #444;
     color: #fff;
-    margin-right: 10px;
 }
 
 .btn-secondary:hover {
